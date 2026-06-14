@@ -1,26 +1,42 @@
 # Sergio Jurado · CV / Portfolio
 
-CV digital y portfolio multilingüe generado con [Perplexity](https://www.perplexity.ai).
+CV digital y portfolio multilingüe construido con [Astro](https://astro.build).
 
-## Idiomas
+## Estructura
 
-- [Español](/es.html)
-- [Catalán](/ca.html)
-- [Inglés](/en.html)
+```
+src/
+├── layouts/
+│   └── Base.astro      ← Layout compartido (head, header, footer, scripts)
+└── pages/
+    ├── index.astro      ← Redirige a /es/
+    ├── es/
+    │   ├── index.astro       ← Inicio español
+    │   ├── logistica.astro
+    │   ├── fullstack.astro
+    │   └── generico.astro
+    ├── ca/                   ← Catalán (misma estructura)
+    └── en/                   ← Inglés (misma estructura)
+public/
+├── _astro/_profile_.BHwwt2wB.css   ← Estilos generados por Perplexity
+└── favicon.svg
+```
 
-## Variantes por perfil
+## Rutas
 
-Cada idioma tiene tres variantes de CV:
-- **Logística** — `/es/logistica.html`, `/ca/logistica.html`, `/en/logistica.html`
-- **Fullstack** — `/es/fullstack.html`, `/ca/fullstack.html`, `/en/fullstack.html`
-- **Genérico** — `/es/generico.html`, `/ca/generico.html`, `/en/generico.html`
+| Ruta | Contenido |
+|------|-----------|
+| `/` | Redirige a `/es/` |
+| `/es/`, `/ca/`, `/en/` | Home por idioma |
+| `/es/logistica`, `/ca/logistica`, `/en/logistica` | CV Logística |
+| `/es/fullstack`, `/ca/fullstack`, `/en/fullstack` | CV Fullstack |
+| `/es/generico`, `/ca/generico`, `/en/generico` | CV Genérico |
 
-## Desarrollo local
+## Desarrollo
 
 ```bash
-# Servir estáticamente con Python
-python3 -m http.server 8000
-
-# O con npx serve
-npx serve .
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # Genera dist/
+npm run preview  # Previsualiza build
 ```
